@@ -1,4 +1,4 @@
-## Running from source
+## Executar
 
 - Primeiro verifique se o python3.9 está instalado:
 
