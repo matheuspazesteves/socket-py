@@ -14,7 +14,6 @@ def main():
         operation = input("Escolha a operação (+, -, *, /) ou 'sair' para encerrar: ")
         if operation.lower() == 'sair':
             break
-
         numbers = input("Digite os números separados por espaço: ")
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         message = {
@@ -24,7 +23,6 @@ def main():
         data=pickle.dumps(message)
         client_socket.connect((server_ip, server_port))
         client_socket.send(data)
-
         result = client_socket.recv(1024).decode()
         print(f"Resultado: {result}")
 
