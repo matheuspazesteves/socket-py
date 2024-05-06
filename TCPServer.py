@@ -8,10 +8,20 @@ load_dotenv();
 def handle_client(client_socket, addr):
     request = client_socket.recv(1024)
     data = pickle.loads(request)
-    console.log(data)
+    if(len(data['numeros']) == 0):
+        client_socket.send('Sem números'.encode())
+        print(f"Conexão encerrada de {addr}")
+        client_socket.close()
+        return
+    if(len(data['numeros']) == 1):
+        client_socket.send('Somente um número'.encode())
+        print(f"Conexão encerrada de {addr}")
+        client_socket.close()
+        return
     numbers = list(map(float, data['numeros'].split()))
     if len(numbers) > 20:
         client_socket.send('Quantidade de números não pode ser maior que 20'.encode())
+        print(f"Conexão encerrada de {addr}")
         client_socket.close()
         return
     operation = data['operacao']
