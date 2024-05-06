@@ -7,13 +7,15 @@ python3 --version
 ```
 - Caso não esteja instalado instalar v3.9 ou superior:
 ```bash
-sudo apt-get install python3.9
+sudo apt-get update
+sudo apt-get install git
+sudo apt-get install python3-dotenv
 ```
 
 - Segundo Clone o repositorio
 
 ```bash
-git clone https://github.com/matheuspazesteves/socket-py.git
+sudo git clone https://github.com/matheuspazesteves/socket-py.git
 ```
 
 - Abra a pasta:

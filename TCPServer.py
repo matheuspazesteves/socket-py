@@ -5,9 +5,10 @@ from functools import reduce
 from dotenv import load_dotenv
 load_dotenv();
 
-def handle_client(client_socket):
+def handle_client(client_socket, addr):
     request = client_socket.recv(1024)
     data = pickle.loads(request)
+    console.log(data)
     numbers = list(map(float, data['numeros'].split()))
     if len(numbers) > 20:
         client_socket.send('Quantidade de números não pode ser maior que 20'.encode())
@@ -43,7 +44,7 @@ def main():
     while True:
         client_socket, addr = server.accept()
         print(f"Conexão recebida de {addr}")
-        handle_client(client_socket)
+        handle_client(client_socket, addr)
 
 if __name__ == "__main__":
     main()
